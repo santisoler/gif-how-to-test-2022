@@ -2,6 +2,7 @@
 Introduction to pytest
 """
 import pytest
+import numpy as np
 import numpy.testing as npt
 
 
@@ -45,6 +46,17 @@ def test_add_with_negative_floats():
     y = -1.0
     result = add(x, y)
     expected = 0.2
+    npt.assert_allclose(result, expected)
+
+
+def test_add_with_arrays():
+    """
+    Test add function
+    """
+    x = np.array([20, 1.2, -5])
+    y = np.array([3, -1.0, 15])
+    expected = np.array([23, 0.2, 10])
+    result = add(x, y)
     npt.assert_allclose(result, expected)
 
 
